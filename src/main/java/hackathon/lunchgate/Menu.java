@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 public class Menu {
 
 	public String title;
-	public String shortTitle;
 	public String category;
 	//public Double price;
 }

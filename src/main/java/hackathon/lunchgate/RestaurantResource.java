@@ -9,7 +9,7 @@ import org.jboss.resteasy.reactive.RestQuery;
 
 import io.smallrye.common.annotation.Blocking;
 
-@Path("/restaurant")
+@Path("/api/restaurant")
 public class RestaurantResource {
 
 	 @RestClient
