@@ -20,6 +20,6 @@ public interface RestaurantService {
 
     @GET
     @Path("list")
-    Restaurants list(@RestQuery String city, @RestQuery String country, @RestQuery String language, @RestQuery String response);
+    Restaurants list(@RestQuery String city, @RestQuery String country, @RestQuery String language, @RestQuery String response, @RestQuery String latitude, @RestQuery String longitude);
 
 }
