@@ -6,7 +6,6 @@ type RestaurantItemProps = {
   restaurant: Restaurant;
 };
 export const RestaurantItem = ({ restaurant }: RestaurantItemProps) => {
-
   return (
     <IonItem routerLink={`/restaurant/${restaurant.id}`} detail={true}>
       <div slot="start"></div>
@@ -17,7 +16,7 @@ export const RestaurantItem = ({ restaurant }: RestaurantItemProps) => {
         <IonNote>{message.date}</IonNote>
       </span> */}
         </h2>
-        <h3>{restaurant.homepage}</h3>
+        <a href={restaurant.homepage}>Zum restaurant</a>
       </IonLabel>
     </IonItem>
   );

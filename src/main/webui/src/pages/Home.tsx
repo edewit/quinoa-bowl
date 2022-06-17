@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { useParams } from "react-router";
 import {
-  IonBackButton,
-  IonButtons,
   IonContent,
   IonHeader,
-  IonList,
   IonPage,
   IonRefresher,
   IonRefresherContent,
@@ -17,7 +14,6 @@ import { Geolocation } from "@capacitor/geolocation";
 
 import { Restaurant, getRestaurants } from "../data/RestaurantRepository";
 import { RestaurantItem } from "../components/RestaurantItem";
-import MenuListItem from "../components/MenuListItem";
 
 import "./Home.css";
 
