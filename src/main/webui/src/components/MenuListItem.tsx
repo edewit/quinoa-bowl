@@ -24,21 +24,22 @@ const MenuListItem: React.FC<MenuItemProps> = ({ menu }) => {
   useEffect(() => {
     checkScreenReaderEnabled();
   }, []);
-
+const price = typeof menu.price === "string"?menu.price:""
+const category = menu.category === "UNDEFINED" ? "Keine Kategorie" : menu.category
   return (
+    <li>
     <IonItem routerLink={`/restaurant/${menu.id}`} detail={false}>
       <div slot="start"></div>
       <IonLabel className="ion-text-wrap">
         <h2>
-          {menu.title}
-          {/* <span className="date">
-            <IonNote>{message.date}</IonNote>
-          </span> */}
+          {menu.title} {price} 
+          
         </h2>
-        <h3>{menu.category}</h3>
+        <h3>{category}</h3>
       </IonLabel>
     </IonItem>
-  );
+    </li>
+   );
 };
 
 export default MenuListItem;

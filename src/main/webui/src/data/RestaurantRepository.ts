@@ -8,7 +8,8 @@ export interface Restaurant {
 export interface MenuItem {
   id: number;
   title: string;
-  category: number;
+  category: string;
+  price: string;
 }
 
 const baseURL = ""; //"http://172.20.10.90:8080"

@@ -47,7 +47,7 @@ const Home: React.FC = () => {
     <IonPage id="home-page">
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Restaurants</IonTitle>
+          <IonTitle><h1>Restaurants</h1></IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
@@ -61,7 +61,7 @@ const Home: React.FC = () => {
           </IonToolbar>
         </IonHeader>
 
-        <IonList>
+        <ul className="list">
           {!id &&
             restaurants.map((r) => (
               <RestaurantItem key={r.id} restaurant={r} />
@@ -70,7 +70,7 @@ const Home: React.FC = () => {
             restaurants
               .find(({ id: i }) => i === parseInt(id, 10))
               ?.menues.map((m) => <MenuListItem key={m.id} menu={m} />)}
-        </IonList>
+        </ul>
       </IonContent>
     </IonPage>
   );
