@@ -27,6 +27,7 @@ function ViewMenu() {
   });
 
   const toString = (p: any) => (typeof p === "string" ? p : "");
+  const hasPrice = (p: any) => toString(p.price) !== ""
   return (
     <IonPage id="view-message-page">
       <IonHeader translucent>
@@ -44,10 +45,10 @@ function ViewMenu() {
               <IonItem key={i}>
                 <IonLabel className="ion-text-wrap">
                   <h2>
-                    {e.title} CHF {toString(e.price)}
+                    {e.title} {hasPrice(e) ? "CHF" : ""} {toString(e.price)}
                   </h2>
                   <ul className="list">
-                    <li>{e.line2}</li>
+                    <li>{toString(e.line2)}</li>
                     <li>{toString(e.line3)}</li>
                   </ul>
                 </IonLabel>
