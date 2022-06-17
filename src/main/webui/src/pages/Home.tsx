@@ -23,7 +23,6 @@ import "./Home.css";
 
 const Home: React.FC = () => {
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
-  const { id } = useParams<{ id?: string }>();
 
   const load = async () => {
     let coordinates = { latitude: 47.36667, longitude: 8.55 };
@@ -49,12 +48,9 @@ const Home: React.FC = () => {
     <IonPage id="home-page">
       <IonHeader>
         <IonToolbar>
-          <IonTitle><h1>Restaurants</h1></IonTitle>
-          { id &&
-            <IonButtons slot="start">
-              <IonBackButton text="Restaurant" defaultHref="/home"></IonBackButton>
-            </IonButtons>
-          }
+          <IonTitle>
+            <h1>Restaurants</h1>
+          </IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
@@ -69,14 +65,9 @@ const Home: React.FC = () => {
         </IonHeader>
 
         <ul className="list">
-          {!id &&
-            restaurants.map((r) => (
-              <RestaurantItem key={r.id} restaurant={r} />
-            ))}
-          {id &&
-            restaurants
-              .find(({ id: i }) => i === parseInt(id, 10))
-              ?.menues.map((m) => <MenuListItem key={m.id} menu={m} />)}
+          {restaurants.map((r) => (
+            <RestaurantItem key={r.id} restaurant={r} />
+          ))}
         </ul>
       </IonContent>
     </IonPage>

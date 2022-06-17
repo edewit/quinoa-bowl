@@ -12,16 +12,24 @@ export interface MenuItem {
   price: string;
 }
 
-const baseURL = ""; //"http://172.20.10.90:8080"
+export interface DigitalMenu {
+  digital_menu: any;
+}
+
+const baseURL =
+  //"http://quinoa-bowl-menuista.apps.cluster-jpv4f.jpv4f.sandbox1420.opentlc.com/"; //"http://172.20.10.90:8080"
+  "";
 
 export const getRestaurants = async (lat: number, long: number) => {
-  const response = await fetch(`${baseURL}/api/restaurant/list?lat=${lat}&long=${long}`);
+  const response = await fetch(
+    `${baseURL}/api/restaurant/list?lat=${lat}&long=${long}`
+  );
   const data = await response.json();
   return data as Restaurant[];
 };
 
 export const getMenu = async (id: number) => {
-  const res = await fetch(`${baseURL}/api/menu/${id}`);
+  const res = await fetch(`${baseURL}/api/restaurant/menu?id=${id}`);
   const menu = await res.json();
-  return menu as MenuItem[];
+  return menu as DigitalMenu;
 };
