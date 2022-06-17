@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useParams } from "react-router";
 import {
+  IonBackButton,
+  IonButtons,
   IonContent,
   IonHeader,
   IonList,
@@ -48,6 +50,11 @@ const Home: React.FC = () => {
       <IonHeader>
         <IonToolbar>
           <IonTitle><h1>Restaurants</h1></IonTitle>
+          { id &&
+            <IonButtons slot="start">
+              <IonBackButton text="Restaurant" defaultHref="/home"></IonBackButton>
+            </IonButtons>
+          }
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
