@@ -1,6 +1,5 @@
-import MessageListItem from "../components/MessageListItem";
 import { useState } from "react";
-import { Message, getMessages } from "../data/messages";
+import { useParams } from "react-router";
 import {
   IonContent,
   IonHeader,
@@ -12,14 +11,30 @@ import {
   IonToolbar,
   useIonViewWillEnter,
 } from "@ionic/react";
+import { Geolocation } from "@capacitor/geolocation";
+
+import { Restaurant, getRestaurants } from "../data/RestaurantRepository";
+import { RestaurantItem } from "../components/RestaurantItem";
+import MenuListItem from "../components/MenuListItem";
+
 import "./Home.css";
 
 const Home: React.FC = () => {
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
+  const { id } = useParams<{ id?: string }>();
 
   const load = async () => {
-    const msgs = await getMessages();
-    setMessages(msgs);
+    let coordinates = { latitude: 47.36667, longitude: 8.55 };
+    try {
+      coordinates = (await Geolocation.getCurrentPosition()).coords;
+    } catch (e) {
+      console.warn("couldn't get geo location using default", e);
+    }
+    const rest = await getRestaurants(
+      coordinates.latitude,
+      coordinates.longitude
+    );
+    setRestaurants(rest);
   };
 
   useIonViewWillEnter(load);
@@ -32,7 +47,7 @@ const Home: React.FC = () => {
     <IonPage id="home-page">
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Inbox</IonTitle>
+          <IonTitle>Restaurants</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
@@ -42,14 +57,19 @@ const Home: React.FC = () => {
 
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Inbox</IonTitle>
+            <IonTitle size="large">Restaurants</IonTitle>
           </IonToolbar>
         </IonHeader>
 
         <IonList>
-          {messages.map((m) => (
-            <MessageListItem key={m.id} message={m} />
-          ))}
+          {!id &&
+            restaurants.map((r) => (
+              <RestaurantItem key={r.id} restaurant={r} />
+            ))}
+          {id &&
+            restaurants
+              .find(({ id: i }) => i === parseInt(id, 10))
+              ?.menues.map((m) => <MenuListItem key={m.id} menu={m} />)}
         </IonList>
       </IonContent>
     </IonPage>

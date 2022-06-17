@@ -39,3 +39,6 @@ nb-configuration.xml
 .env
 /.mvn
 node_modules/
+
+android/
+build/
