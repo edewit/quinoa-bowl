@@ -12,9 +12,6 @@ export const RestaurantItem = ({ restaurant }: RestaurantItemProps) => {
       <IonLabel className="ion-text-wrap">
         <h2>
           {restaurant.realName}
-          {/* <span className="date">
-        <IonNote>{message.date}</IonNote>
-      </span> */}
         </h2>
         <a href={restaurant.homepage}>Zum restaurant</a>
       </IonLabel>

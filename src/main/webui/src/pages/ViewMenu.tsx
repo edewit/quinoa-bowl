@@ -23,9 +23,9 @@ function ViewMenu() {
   useIonViewWillEnter(async () => {
     const menu = await getMenu(parseInt(params.id, 10));
     setMenu(menu);
-    Object.values(menu?.digital_menu).map((e: any, i) => console.log(e.label));
   });
 
+  const toString = (p: any) => typeof p === "string" ? p : ""
   return (
     <IonPage id="view-message-page">
       <IonHeader translucent>
@@ -42,8 +42,15 @@ function ViewMenu() {
             <IonItem key={i}>{e.label}</IonItem>
           ))} */}
           {menu &&
-            Object.values(menu.digital_menu).map((e: any, i) => (
-              <IonItem key={i}>{e.label}</IonItem>
+            Object.values(menu.menu).map((e: any, i) => (
+              <IonItem key={i}>
+                <ul>
+                <li>{e.title}</li>
+                <li>{e.line2}</li>
+                <li>{toString(e.line3)}</li>
+                <li>{toString(e.price)}</li>
+                </ul>
+              </IonItem>
             ))}
         </IonList>
       </IonContent>

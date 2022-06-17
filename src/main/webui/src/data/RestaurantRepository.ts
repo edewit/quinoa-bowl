@@ -13,7 +13,7 @@ export interface MenuItem {
 }
 
 export interface DigitalMenu {
-  digital_menu: any;
+  menu: any;
 }
 
 const baseURL =
