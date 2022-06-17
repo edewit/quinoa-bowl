@@ -5,6 +5,7 @@ import {
   IonContent,
   IonHeader,
   IonItem,
+  IonLabel,
   IonList,
   IonPage,
   IonToolbar,
@@ -25,7 +26,7 @@ function ViewMenu() {
     setMenu(menu);
   });
 
-  const toString = (p: any) => typeof p === "string" ? p : ""
+  const toString = (p: any) => (typeof p === "string" ? p : "");
   return (
     <IonPage id="view-message-page">
       <IonHeader translucent>
@@ -38,18 +39,18 @@ function ViewMenu() {
 
       <IonContent fullscreen>
         <IonList>
-          {/* {Object.values(menu?.digital_menu).map((e: any, i) => (
-            <IonItem key={i}>{e.label}</IonItem>
-          ))} */}
           {menu &&
             Object.values(menu.menu).map((e: any, i) => (
               <IonItem key={i}>
-                <ul>
-                <li>{e.title}</li>
-                <li>{e.line2}</li>
-                <li>{toString(e.line3)}</li>
-                <li>{toString(e.price)}</li>
-                </ul>
+                <IonLabel className="ion-text-wrap">
+                  <h2>
+                    {e.title} CHF {toString(e.price)}
+                  </h2>
+                  <ul className="list">
+                    <li>{e.line2}</li>
+                    <li>{toString(e.line3)}</li>
+                  </ul>
+                </IonLabel>
               </IonItem>
             ))}
         </IonList>
