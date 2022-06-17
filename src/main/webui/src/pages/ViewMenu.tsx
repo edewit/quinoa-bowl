@@ -31,7 +31,7 @@ function ViewMenu() {
       <IonHeader translucent>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonBackButton text="Back" defaultHref="/home"></IonBackButton>
+            <IonBackButton text="Zurück zur Restaurantauswahl" defaultHref="/home"></IonBackButton>
           </IonButtons>
         </IonToolbar>
       </IonHeader>
