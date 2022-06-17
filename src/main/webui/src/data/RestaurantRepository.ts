@@ -11,7 +11,7 @@ export interface MenuItem {
   category: number;
 }
 
-const baseURL = "http://172.20.10.90:8080"
+const baseURL = ""; //"http://172.20.10.90:8080"
 
 export const getRestaurants = async (lat: number, long: number) => {
   const response = await fetch(`${baseURL}/api/restaurant/list?lat=${lat}&long=${long}`);
