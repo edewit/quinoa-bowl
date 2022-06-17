@@ -15,6 +15,17 @@ open your browser `http://localhost:8080/` files are served `./src/main/webui/` 
 
 > **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
 
+## Running on mobile
+
+The `src/main/webui` is build with ionicframework can can also be installed as a mobile app:
+
+```shell script
+cd ./src/main/webui/
+npm i
+npm run build
+npx cap run android
+```
+
 ## Packaging and running the application
 
 The application can be packaged using:
